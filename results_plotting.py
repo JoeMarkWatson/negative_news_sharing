@@ -11,7 +11,7 @@ import math
 
 ## IMPORT DATA
 
-results = pd.read_csv('all_results.csv', index_col=0)
+results = pd.read_csv('data/all_results.csv', index_col=0)
 results['error_diff1'] = results['point_est1'] - results['lower_est1']
 results['error_diff2'] = results['point_est2'] - results['lower_est2']
 results['error_diff3'] = results['point_est3'] - results['lower_est3']

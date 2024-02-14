@@ -94,25 +94,25 @@ def post_df_descriptives(posts_df, data_name='Tweets VADER'):
 
 # load data
 
-df_tweetsDM = pd.read_csv('twitter_shares_DM.csv')  # Daily Mail
-df_i_tweetsDM = pd.read_csv('twitter_i_shares_DM.csv')
-df_fb_sharesDM = pd.read_csv('fb_shares_DM.csv')
-df_mddDM = pd.read_csv('news_DM.csv')
+df_tweetsDM = pd.read_csv('data/twitter_shares_DM.csv')  # Daily Mail
+df_i_tweetsDM = pd.read_csv('data/twitter_i_shares_DM.csv')
+df_fb_sharesDM = pd.read_csv('data/fb_shares_DM.csv')
+df_mddDM = pd.read_csv('data/news_DM.csv')
 
-df_tweetsG = pd.read_csv('twitter_shares_G.csv')  # Guardian
-df_i_tweetsG = pd.read_csv('twitter_i_shares_G.csv')
-df_fb_sharesG = pd.read_csv('fb_shares_G.csv')
-df_mddG = pd.read_csv('news_G.csv')
+df_tweetsG = pd.read_csv('data/twitter_shares_G.csv')  # Guardian
+df_i_tweetsG = pd.read_csv('data/twitter_i_shares_G.csv')
+df_fb_sharesG = pd.read_csv('data/fb_shares_G.csv')
+df_mddG = pd.read_csv('data/news_G.csv')
 
-df_tweetsNYP = pd.read_csv('twitter_shares_NYP.csv')  # New York Post
-df_i_tweetsNYP = pd.read_csv('twitter_i_shares_NYP.csv')
-df_fb_sharesNYP = pd.read_csv('fb_shares_NYP.csv')
-df_mddNYP = pd.read_csv('news_NYP.csv')
+df_tweetsNYP = pd.read_csv('data/twitter_shares_NYP.csv')  # New York Post
+df_i_tweetsNYP = pd.read_csv('data/twitter_i_shares_NYP.csv')
+df_fb_sharesNYP = pd.read_csv('data/fb_shares_NYP.csv')
+df_mddNYP = pd.read_csv('data/news_NYP.csv')
 
-df_tweetsNYT = pd.read_csv('twitter_shares_NYT.csv')  # New York Times
-df_i_tweetsNYT = pd.read_csv('twitter_i_shares_NYT.csv')
-df_fb_sharesNYT = pd.read_csv('fb_shares_NYT.csv')
-df_mddNYT = pd.read_csv('news_NYT.csv')
+df_tweetsNYT = pd.read_csv('data/twitter_shares_NYT.csv')  # New York Times
+df_i_tweetsNYT = pd.read_csv('data/twitter_i_shares_NYT.csv')
+df_fb_sharesNYT = pd.read_csv('data/fb_shares_NYT.csv')
+df_mddNYT = pd.read_csv('data/news_NYT.csv')
 
 
 # Apply functions
@@ -150,5 +150,5 @@ for i in range(4):
 
 data_overviews_df = pd.concat(data_overviews_list, axis=0, ignore_index=True)
 
-#data_overviews_df.to_csv('data_summary_file.csv', index=False)
+#data_overviews_df.to_csv('data/data_summary_file.csv', index=False)
 
