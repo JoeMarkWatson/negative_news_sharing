@@ -18,4 +18,4 @@ data_modelling.py is the python script used to generate the models employed when
 results_plotting.py is the python script used to plot the results produced in data_modelling.py.
 
 
-All data required to run these scripts is made available in the folder, data.
+All data required to run these scripts are made available in the folder, data.
