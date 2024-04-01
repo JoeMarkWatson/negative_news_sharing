@@ -542,6 +542,64 @@ all_results_r['sample_size'] = pd.to_numeric(all_results_r['sample_size'], error
 #all_results_r.to_csv('data/all_results_rounded.csv')  # rounded
 
 
+# # Check normality - model residuals and DV
+
+import statsmodels.api as sm
+
+# Create a figure and axes for subplots
+fig, axs = plt.subplots(2, 2, figsize=(11, 8))
+
+# Histograms
+# Plot A: All data
+axs[0, 0].hist(all_manip_dfs['n_tweetsPlusPosts_log'], bins=15)
+axs[0, 0].set_title('A. Histogram - All Articles')
+axs[0, 0].set_xlim(0, 15)  # Set x-axis limits
+axs[0, 0].set_ylabel('Frequency')  # Remove x-axis label for subplot B
+
+# Plot B: All data - residuals of MR model applied to all data
+Y = 'n_tweetsPlusPosts_log'
+T = 'neg_art'
+X = ['my_word_count_log', 'mean_my_word_len_log', 'mean_my_words_in_sen_log', 'year_2020', 'year_2021', 'day_of_week_1',
+     'day_of_week_2', 'day_of_week_3', 'day_of_week_4', 'day_of_week_5', 'day_of_week_6', 'month_02', 'month_03',
+     'month_04', 'month_05', 'month_06', 'month_07', 'month_08', 'month_09', 'month_10', 'month_11', 'month_12']
+paper_name = 'All'
+
+model1 = smf.ols(f"{Y}~{T}+{'+'.join(X)}", data=all_manip_dfs).fit()
+residuals1 = model1.resid
+sm.qqplot(residuals1, line='q', fit=True, ax=axs[0, 1])  # Plot QQ plot
+axs[0, 1].set_title('B. QQ Plot - MR on All Articles')
+axs[0, 1].set_ylim(-4.8, 4.8)  # Set y-axis limits
+axs[0, 1].set_xlim(-4.8, 4.8)  # Set x-axis limits for subplot B
+axs[0, 1].set_xlabel('')  # Remove x-axis label for subplot B
+
+# Plot C: Political articles data
+all_SRQ_dfs = all_manip_dfs[all_manip_dfs['maj_out_or_in'] == 1]
+axs[1, 0].hist(all_SRQ_dfs['n_tweetsPlusPosts_log'], bins=15)
+axs[1, 0].set_title('C. Histogram - Political Articles')
+axs[1, 0].set_xlim(0, 15)  # Set x-axis limits
+axs[1, 0].set_xlabel('Log-transformed Counts of Social Media Posts')  # Add x-axis label for subplot C
+axs[1, 0].set_ylabel('Frequency')  # Remove x-axis label for subplot B
+
+# Plot D: Political articles data - residuals of MR interaction model included used to explore RQ2
+T = 'neg_art+maj_out_group+neg_art*maj_out_group'
+X = X + ['paper_G', 'paper_NYP', 'paper_NYT']
+
+model2 = smf.ols(f"{Y}~{T}+{'+'.join(X)}", data=all_SRQ_dfs).fit()
+residuals2 = model2.resid
+sm.qqplot(residuals2, line='q', fit=True, ax=axs[1, 1])  # Plot QQ plot
+axs[1, 1].set_title('D. QQ Plot - Interaction Model on Political Articles')
+axs[1, 1].set_ylim(-4.8, 4.8)  # Set y-axis limits
+axs[1, 1].set_xlim(-4.8, 4.8)  # Set x-axis limits
+
+# Adjust layout
+plt.tight_layout()
+plt.setp(axs[0, 0].get_xticklabels(), visible=False)  # Share x axis between subplots A and C
+plt.setp(axs[0, 1].get_xticklabels(), visible=False)
+
+# Show plots
+plt.show()
+
+
 
 # NOTES
 
