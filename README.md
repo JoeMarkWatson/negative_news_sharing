@@ -14,6 +14,7 @@ data_modelling.py is the python script used to generate the models employed when
 
 - R2:  Is news article negativity a stronger determinant of social media sharing for content about political out-group (versus in-group) members?  
 
+The data_modelling.py script also investigates dependent variables and model residuals for normality.
 
 results_plotting.py is the python script used to plot the results produced in data_modelling.py.
 
