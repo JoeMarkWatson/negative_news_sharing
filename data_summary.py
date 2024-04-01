@@ -249,5 +249,3 @@ agg_overview.columns = ['news_article_subet', 'num_of_docs', 'mean_words_per_doc
                              'prop_of_docs_neg', 'mean_tweets_FbPosts_cont_art_link', 'mtfb_std',
                              'mean_FbPosts_cont_art_link', 'mfb_std',
                              'mean_tweets_cont_art_link', 'mt_std', 'mean_tweets_RTs_cont_art_link', 'mtrt_std']
-
-#agg_overview.to_csv('data/data_agg_summary_file.csv', index=False)
